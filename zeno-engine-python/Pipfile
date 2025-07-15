@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+numba = "*"
+numpy = "*"
+pandas = "*"
+pillow = "*"
+imageio = "*"
+imageio-ffmpeg = "*"
+typing-extensions = "*"
+
+[dev-packages]
+pytest = "*"
+mypy = "*"
+black = "*"
+
+[requires]
+python_version = "3.13.5"

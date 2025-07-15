@@ -1,0 +1,26 @@
+services:
+  engine:
+    build:
+      context: .
+      dockerfile: zeno-engine-python/Dockerfile.dev
+    volumes:
+      - ./zeno-engine-python:/app
+    working_dir: /app
+    command: ["python", "entry.py", "--scene", "RTI_2D"]
+    ports:
+      - "9000:9000"
+    environment:
+      - PYTHONUNBUFFERED=1  # Optional: get real-time logs
+    restart: unless-stopped
+
+  viewer:
+    build:
+      context: .
+      dockerfile: zeno-viewer/Dockerfile
+    volumes:
+      - ./zeno-viewer:/app
+      - /app/node_modules  # Prevent host-node_modules conflict
+    command: ["yarn", "dev"]
+    ports:
+      - "5173:5173"
+

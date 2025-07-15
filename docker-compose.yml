@@ -1,0 +1,23 @@
+services:
+  engine:
+    build:
+      context: .
+      dockerfile: zeno-engine-python/Dockerfile
+    working_dir: /app
+    volumes:
+      - ./zeno-engine-python/outputs:/app/outputs
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  viewer:
+    build:
+      context: .
+      dockerfile: zeno-viewer/Dockerfile
+    volumes:
+      - ./zeno-viewer:/app
+      - /app/node_modules  # Prevent host-node_modules conflict
+    command: ["yarn", "dev"]
+    ports:
+      - "5173:5173"
+
