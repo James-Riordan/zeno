@@ -14,7 +14,7 @@ def visualize_3d_field(field: np.ndarray, title: str = "3D Field Visualization")
     grid.origin = (0, 0, 0)
 
     # Add field data
-    grid.cell_data["ψ"] = field.flatten(order="F")
+    grid.cell_data["psi"] = field.flatten(order="F")
 
     # Render
     plotter = pv.Plotter()

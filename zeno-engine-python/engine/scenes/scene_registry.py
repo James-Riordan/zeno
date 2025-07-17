@@ -1,7 +1,7 @@
 from __future__ import annotations
 import numpy as np
 from typing import Callable
-from zeno.fields.field import SymbolicField
+from engine.fields.field import SymbolicField
 
 SceneInitFunc = Callable[[SymbolicField], None]
 

@@ -7,7 +7,7 @@ import os
 
 
 if TYPE_CHECKING:
-    from zeno.fields.field import SymbolicField
+    from engine.fields.field import SymbolicField
 
 Dimension = Literal[1, 2, 3]
 Geometry = Literal["cartesian", "rhombic"]

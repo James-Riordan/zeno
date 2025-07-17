@@ -5,10 +5,10 @@ import numpy as np
 import imageio.v3 as iio
 from typing import List, Optional, TYPE_CHECKING
 
-from zeno.config.config import PGNSConfig
+from engine.config.config import PGNSConfig
 
 if TYPE_CHECKING:
-    from zeno.fields.field import SymbolicField
+    from engine.fields.field import SymbolicField
 
 
 class FrameCollector:
@@ -33,7 +33,7 @@ class FrameCollector:
         if self.config.field is None:
             raise ValueError("[FrameCollector] config.field is None — field must be assigned before rendering.")
 
-        from zeno.vis.renderer import render_frame  # Local to avoid cycles
+        from engine.vis.renderer import render_frame  # Local to avoid cycles
         frame_with_overlay = render_frame(
             field=self.config.field,
             config=self.config,

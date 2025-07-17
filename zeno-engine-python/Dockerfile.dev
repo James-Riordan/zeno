@@ -1,13 +1,21 @@
 FROM python:3.13.5
 
+# Install system dependencies and pipenv
 RUN apt-get update && apt-get install -y gcc && \
     pip install --upgrade pip pipenv
 
 WORKDIR /app
 
-COPY zeno-engine-python/Pipfile zeno-engine-python/Pipfile.lock ./
-RUN pipenv install
+# Copy Pipenv files first (for layer caching)
+COPY Pipfile Pipfile.lock ./
 
-COPY zeno-engine-python /app
+# 👇 Install dependencies system-wide
+RUN pipenv install --system --deploy
 
-CMD ["bash"]
+# Copy the source code
+COPY . /app
+
+EXPOSE 9000
+
+# Optional: if running API directly, this is valid
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "9000", "--reload"]

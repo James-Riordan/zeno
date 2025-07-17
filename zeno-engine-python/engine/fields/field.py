@@ -3,13 +3,13 @@ import numpy as np
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from zeno.config.config import PGNSConfig
+    from engine.config.config import PGNSConfig
 
 
 class SymbolicField:
     def __init__(self, config: PGNSConfig):
         # 👇 Deferred import to avoid circular dependency
-        from zeno.scenes.scene_registry import SCENES
+        from engine.scenes.scene_registry import SCENES
 
         self.config = config
         shape = (config.grid_size,) * config.dimension

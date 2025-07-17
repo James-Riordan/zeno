@@ -1,14 +1,25 @@
-FROM node:24
+# Stage 1: Build
+FROM node:24 AS builder
 
 WORKDIR /app
 
-# Only copy what's needed to install dependencies
 COPY package.json yarn.lock ./
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
-# Then copy the rest of the app
 COPY . .
+RUN yarn build
 
-EXPOSE 5173
+# Stage 2: Run the SvelteKit Node server
+FROM node:24 AS runner
 
-CMD ["yarn", "dev", "--host"]
+WORKDIR /app
+
+# Copy only what's needed to run the SvelteKit server
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/.svelte-kit ./svelte-kit
+COPY --from=builder /app/node_modules ./node_modules
+
+EXPOSE 3000
+
+CMD ["node", "build"]

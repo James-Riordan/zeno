@@ -2,8 +2,8 @@
 # import matplotlib.pyplot as plt
 # from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
-# from zeno.fields.field import SymbolicField
-# from zeno.config.config import PGNSConfig
+# from engine.fields.field import SymbolicField
+# from engine.config.config import PGNSConfig
 
 # def render_frame(field: SymbolicField, config: PGNSConfig, step_count: int) -> np.ndarray:
 #     data = field.snapshot()

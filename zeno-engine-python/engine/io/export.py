@@ -1,9 +1,9 @@
 import os
 import numpy as np
 from PIL import Image
-from zeno.fields.field import SymbolicField
-from zeno.config.config import PGNSConfig
-from zeno.io.snapshot import save_npy
+from engine.fields.field import SymbolicField
+from engine.config.config import PGNSConfig
+from engine.io.snapshot import save_npy
 
 
 def export_snapshot(field: SymbolicField, config: PGNSConfig) -> None:

@@ -1,0 +1,14 @@
+.DS_Store
+
+project_dump.txt
+node_modules/
+.svelte-kit/
+
+yarn.lock
+
+.env
+
+__pycache__/
+
+# Custom file format for dev-script purposes
+.dpignore

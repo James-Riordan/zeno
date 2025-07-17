@@ -1,8 +1,8 @@
 from __future__ import annotations
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-from zeno.fields.field import SymbolicField
-from zeno.config.config import PGNSConfig
+from engine.fields.field import SymbolicField
+from engine.config.config import PGNSConfig
 
 
 def render_frame(

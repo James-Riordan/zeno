@@ -2,7 +2,7 @@ from __future__ import annotations
 import os
 import json
 import csv
-from zeno.config.config import PGNSConfig
+from engine.config.config import PGNSConfig
 
 
 def export_benchmark_metrics(

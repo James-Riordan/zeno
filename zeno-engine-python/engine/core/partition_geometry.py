@@ -54,3 +54,32 @@ def partition_table(max_n: int = 500) -> np.ndarray:
         p[k] = total
 
     return p
+
+def compute_partition_gradient(psi: np.ndarray, p_table: np.ndarray | None = None) -> np.ndarray:
+    """
+    Symbolic entropy gradient based on local differences in partition(p(|psi|²)).
+    Acts as an analog to -∇S[psi].
+
+    If no partition table is passed, generate one on-the-fly.
+    """
+    abs_squared = np.abs(psi) ** 2
+    max_val = int(np.ceil(abs_squared.max())) + 10
+
+    if p_table is None:
+        p_table = partition_table(max_val)
+
+    # Convert abs² to nearest integer for indexing into p(n)
+    indices = np.clip(abs_squared.astype(int), 0, max_val)
+    symbolic_entropy = p_table[indices]
+
+    grad = np.zeros_like(psi, dtype=np.complex128)
+    ndim = psi.ndim
+
+    # Compute local symbolic "gradient" (difference in symbolic entropy)
+    for axis in range(ndim):
+        forward = np.roll(symbolic_entropy, -1, axis=axis)
+        backward = np.roll(symbolic_entropy, 1, axis=axis)
+        grad += (forward - backward) * psi  # directional difference scaled by psi
+
+    return -grad  # Negative gradient direction (entropy minimizes)
+

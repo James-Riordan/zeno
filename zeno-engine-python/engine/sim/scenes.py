@@ -2,13 +2,13 @@ from __future__ import annotations
 import numpy as np
 from typing import Callable, TYPE_CHECKING
 
-from zeno.config.config import PGNSConfig
+from engine.config.config import PGNSConfig
 
 # `if TYPE_CHECKING: ...` resolves circular import because
 # `SymbolicField` is no longer accessed at runtime
 # and instead is just hinted at for static type checking
 if TYPE_CHECKING:
-    from zeno.fields.field import SymbolicField  # only used for type hints
+    from engine.fields.field import SymbolicField  # only used for type hints
 
 SceneInitFunc = Callable[[ 'SymbolicField' ], None]  # string-based forward reference
 

@@ -1,7 +1,7 @@
 from __future__ import annotations
-from zeno.config.config import PGNSConfig
-from zeno.sim.pgns_sim import PGNSSimulation
-from zeno.sim.classical_sim import ClassicalSimulation
+from engine.config.config import PGNSConfig
+from engine.sim.pgns_sim import PGNSSimulation
+from engine.sim.classical_sim import ClassicalSimulation
 
 def run_simulation(config: PGNSConfig) -> None:
     if config.mode == "symbolic":

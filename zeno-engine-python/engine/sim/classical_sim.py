@@ -1,12 +1,12 @@
 from __future__ import annotations
 import numpy as np
 
-from zeno.sim.base import BaseSimulation
-from zeno.config.config import PGNSConfig
-from zeno.utils.laplacian import laplacian_nd
-from zeno.vis.renderer import render_frame
-from zeno.vis.animator import FrameCollector
-from zeno.io.metrics import MetricTracker
+from engine.sim.base import BaseSimulation
+from engine.config.config import PGNSConfig
+from engine.utils.diff_ops import compute_laplacian_nd
+from engine.vis.renderer import render_frame
+from engine.vis.animator import FrameCollector
+from engine.io.metrics import MetricTracker
 
 
 class ClassicalSimulation(BaseSimulation):
@@ -16,7 +16,7 @@ class ClassicalSimulation(BaseSimulation):
         self.metrics = MetricTracker(scene=config.scene, output_dir=config.output_dir)
 
     def step(self) -> None:
-        delta = laplacian_nd(self.field.values, self.config.dimension)
+        delta = compute_laplacian_nd(self.field.values, self.config.dimension)
         self.field.apply_delta(delta, self.config.time_step)
         self.time += self.config.time_step
         self.step_count += 1
