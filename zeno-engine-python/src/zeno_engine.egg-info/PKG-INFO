@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: zeno-engine
+Version: 0.1.0
+Summary: Zeno Engine — symbolic + classical simulation engine for math & physics
+Author: James (Zigadel)
+License: MIT
+Requires-Dist: numpy
+Requires-Dist: numba
+Requires-Dist: pandas
+Requires-Dist: pillow
+Requires-Dist: imageio
+Requires-Dist: imageio-ffmpeg
+Requires-Dist: typing-extensions
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]

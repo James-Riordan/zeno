@@ -6,9 +6,9 @@ services:
     working_dir: /app
     volumes:
       - ./zeno-engine-python:/app
-    # command: ["python", "entry.py", "--scene", "RTI_2D"]
+    command: ["python", "src/main.py", "--scene", "RTI_2D", "--steps", "500", "--dim", "2"]
     ports:
-      - "9000:9000"
+      - "9000:9000"  # Still useful if API is ever used
     environment:
       - PYTHONUNBUFFERED=1
     restart: unless-stopped

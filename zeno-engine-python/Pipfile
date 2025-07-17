@@ -3,7 +3,11 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
+[requires]
+python_version = "3.13.5"
+
 [packages]
+zeno-engine = {path = ".", editable = true}
 numba = "*"
 numpy = "*"
 pandas = "*"
@@ -19,6 +23,3 @@ pytest = "*"
 mypy = "*"
 black = "*"
 watchfiles = "*"
-
-[requires]
-python_version = "3.13.5"

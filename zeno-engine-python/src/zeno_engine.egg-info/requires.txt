@@ -1,0 +1,9 @@
+numpy
+numba
+pandas
+pillow
+imageio
+imageio-ffmpeg
+typing-extensions
+fastapi
+uvicorn[standard]

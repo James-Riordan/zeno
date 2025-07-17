@@ -1,0 +1,8 @@
+setup.cfg
+setup.py
+zenocli.egg-info/PKG-INFO
+zenocli.egg-info/SOURCES.txt
+zenocli.egg-info/dependency_links.txt
+zenocli.egg-info/entry_points.txt
+zenocli.egg-info/requires.txt
+zenocli.egg-info/top_level.txt

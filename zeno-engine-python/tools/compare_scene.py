@@ -13,7 +13,7 @@ def run_sim(mode: str, scene: str, steps: int, grid: int, silent: bool = False) 
     csv_path = os.path.join(output_dir, f"{tag}_metrics.csv")
 
     cmd = [
-        "python", "entry.py",
+        "python", "engine/main.py",
         "--mode", mode,
         "--scene", scene,
         "--steps", str(steps),
