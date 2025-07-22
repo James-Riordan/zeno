@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "588c80590b213879cdd531e46ad030bbf8428af7dca8a2379a3f659a4e073952"
+            "sha256": "da9c65573a2676569777ae9383ed37802c665ce548761fd72c4c3e530207dfd4"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.13.5"
+            "python_version": "3.11.9"
         },
         "sources": [
             {
@@ -64,6 +64,15 @@
             "markers": "python_version >= '3.7'",
             "version": "==1.5.4"
         },
+        "toml": {
+            "hashes": [
+                "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b",
+                "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2'",
+            "version": "==0.10.2"
+        },
         "typer": {
             "extras": [
                 "all"
@@ -83,7 +92,7 @@
             "markers": "python_version >= '3.9'",
             "version": "==4.14.1"
         },
-        "zenocli": {
+        "zeno-cli": {
             "editable": true,
             "path": "."
         }

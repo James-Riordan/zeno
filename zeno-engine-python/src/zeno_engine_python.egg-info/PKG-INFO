@@ -1,8 +1,8 @@
 Metadata-Version: 2.4
-Name: zeno-engine
+Name: zeno-engine-python
 Version: 0.1.0
 Summary: Zeno Engine — symbolic + classical simulation engine for math & physics
-Author: James (Zigadel)
+Author: James Riordan
 License: MIT
 Requires-Dist: numpy
 Requires-Dist: numba

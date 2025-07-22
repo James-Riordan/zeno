@@ -4,10 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [requires]
-python_version = "3.13.5"
+python_version = "3.11.9"
 
 [packages]
-zeno-engine = {path = ".", editable = true}
+zeno-engine-python = {path = ".", editable = true}
 numba = "*"
 numpy = "*"
 pandas = "*"
@@ -17,9 +17,11 @@ imageio-ffmpeg = "*"
 typing-extensions = "*"
 fastapi = "*"
 uvicorn = "*"
+toml = "*"
+pydantic = ">=2.0"
 
 [dev-packages]
-pytest = "*"
 mypy = "*"
 black = "*"
 watchfiles = "*"
+pytest = "*"

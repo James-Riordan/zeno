@@ -1,5 +1,5 @@
 {
-	"name": "zeno-viewer",
+	"name": "zeno-gui",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",

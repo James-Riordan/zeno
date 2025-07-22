@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
-Name: zenocli
+Name: zeno-cli
 Version: 0.1.0
 Summary: Zeno CLI — control interface for engine, viewer, and orchestration
-Author: James (Zigadel)
+Author: James Riordan
 License: MIT
 Requires-Dist: typer[all]

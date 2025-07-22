@@ -1,5 +1,7 @@
 # 🧠 Zeno
 
+USE PYTHON 3.11.9! (`python3.11`)
+
 > A timeless engine for symbolic wave and field simulation — discrete, harmonic, and post-calculus.
 
 Zeno is a dual-stack symbolic physics engine and visualization platform, designed to replace classical PDE solvers with fully symbolic, recursive logic rooted in Partition Geometry, entropy gradients, and wave-based field theory.
@@ -17,6 +19,7 @@ Zeno simulates symbolic field evolution in 1D, 2D, and 3D using equations like:
 \]
 
 Where:
+
 - `𝒜` is the symbolic energy field
 - `ℛ[𝒜]` is symbolic curvature via **Partition Geometry**
 - `𝒯[𝒜]` is symbolic torsion (antisymmetric twist)
@@ -34,7 +37,7 @@ This repo contains two core projects:
 ```sh
 zeno/
 ├── zeno-engine-python/ # Symbolic simulation engine (Numba, FastAPI)
-├── zeno-viewer/ # UI viewer (SvelteKit, TailwindCSS, Three.js)
+├── zeno-gui/ # UI viewer (SvelteKit, TailwindCSS, Three.js)
 ├── docker-compose.yml # Full-stack runner (viewer + API)
 ```
 
@@ -45,7 +48,7 @@ zeno/
 - Saves `.mp4`, `.gif`, `.npy`, `.csv`, `.json` metrics
 - Powered by FastAPI, Numba, and NumPy
 
-### 🌐 [`zeno-viewer/`](./zeno-viewer)
+### 🌐 [`zeno-gui/`](./zeno-gui)
 
 - Web UI for configuring and launching simulations
 - Tailwind-powered design, optional Three.js visualizer

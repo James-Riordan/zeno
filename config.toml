@@ -1,0 +1,31 @@
+[math]
+number_base = 10  # Options: 10 or 12
+
+[defaults]
+lattice_type = "grid"
+dimensions = 2
+grid_size = [64, 64]
+field = "rti"  # Options: scalar, vector, multivector, etc.
+operator = "pgns"  # Options: pgns, rehte, classical
+simulation_steps = 1000
+output_format = "npy"
+
+[gui]
+auto_launch = true
+theme = "dark"
+default_zoom = 1.0
+
+[engine]
+num_threads = "auto"  # Can be "auto" or integer
+use_numba = true
+backend = "symbolic"  # Options: symbolic, classical
+
+[output]
+save_dir = "./output"
+formats = ["png", "mp4", "json"]
+enable_metrics = true
+
+[debug]
+verbose = false
+log_level = "info"
+profile = false

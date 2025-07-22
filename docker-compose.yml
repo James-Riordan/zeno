@@ -13,7 +13,7 @@ services:
 
   viewer:
     build:
-      context: ./zeno-viewer
+      context: ./zeno-gui
       dockerfile: Dockerfile
     ports:
       - "3000:3000"

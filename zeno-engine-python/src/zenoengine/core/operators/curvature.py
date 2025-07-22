@@ -1,14 +1,20 @@
 from __future__ import annotations
 import numpy as np
-from zenoengine.core.partition_geometry import partition_table
 from numba import njit
+from zenoengine.core.partition_geometry import partition_table
+
 
 @njit
 def curvature_operator(values: np.ndarray, dim: int) -> np.ndarray:
     """
-    Symbolic curvature ℛ[𝒜] using partition geometry.
+    Computes symbolic curvature ℛ[𝒜] from the field values using partition geometry.
 
-    Discrete symbolic Laplacian: 2p(c) - Σp(n)
+    Args:
+        values: ndarray of real values representing the field ψ or 𝒜.
+        dim: Spatial dimension (1, 2, or 3).
+
+    Returns:
+        ndarray of the same shape as `values` containing the curvature.
     """
     shape = values.shape
     p_table = partition_table(500)
@@ -56,4 +62,8 @@ def curvature_operator(values: np.ndarray, dim: int) -> np.ndarray:
                         p_table[c] - p_table[min(int(abs(n) * 50), 499)]
                         for n in neighbors
                     )
+
+    else:
+        raise ValueError("Unsupported dimension for curvature_operator")
+
     return result

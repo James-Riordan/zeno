@@ -4,13 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [requires]
-python_version = "3.13.5"
+python_version = "3.11.9"
 
 [packages]
-zenocli = { path = ".", editable = true }
+zeno-cli = { path = ".", editable = true }
+toml = "*"
 
 [dev-packages]
 black = "*"
 mypy = "*"
-pytest = "*"
 watchdog = "*"
+pytest = "*"

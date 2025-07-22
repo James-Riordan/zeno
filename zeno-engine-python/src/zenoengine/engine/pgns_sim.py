@@ -1,8 +1,8 @@
 from __future__ import annotations
 import numpy as np
 
-from zenoengine.sim.base import BaseSimulation
-from zenoengine.config.config import PGNSConfig
+from zenoengine.engine.base import BaseSimulation
+from from zenocore.config.types import ZenoConfig
 from zenoengine.core.operators.main import symbolic_pgns_operator
 from zenoengine.core.operators.curvature import curvature_operator
 from zenoengine.core.operators.torsion import torsion_operator
@@ -11,31 +11,31 @@ from zenoengine.vis.animator import FrameCollector
 from zenoengine.io.metrics import MetricTracker
 
 
-class PGNSimulation(BaseSimulation):
+class PGNSSimulation(BaseSimulation):
     """
-    Partition Geometry Navier–Stokes (PGNS) Simulation:
+    Partition Geometry Navier–Stokes Simulation:
     ∂𝒜/∂t = -i (ℛ[𝒜] + λ·𝒯[𝒜] + κ·|𝒜|²·𝒜 + β·𝒮*[𝒜])
     """
 
-    def __init__(self, config: PGNSConfig):
+    def __init__(self, config: ZenoConfig):
         super().__init__(config)
 
         self.animator = FrameCollector(config)
         self.metrics = MetricTracker(
-            scene=config.scene,
-            output_dir=config.output_dir
+            scene=config.defaults.field,
+            output_dir=config.output.save_dir
         )
 
-        # Symbolic coefficients
+        # Symbolic coefficients — these can later be passed via config.toml
         self.lambda_ = 0.4
         self.kappa = 0.9
         self.beta = 0.3
 
     def step(self) -> None:
         psi = self.field.values
-        dim = self.config.dimension
+        dim = self.config.defaults.dimensions
 
-        # Composite symbolic operator
+        # Composite symbolic PGNS operator
         delta = symbolic_pgns_operator(
             psi=psi,
             dim=dim,
@@ -44,18 +44,17 @@ class PGNSimulation(BaseSimulation):
             beta=self.beta
         )
 
-        # Apply field update
-        self.field.apply_delta(delta, self.config.time_step)
-        self.time += self.config.time_step
+        # Apply update
+        self.field.apply_delta(delta, self.config.defaults.simulation_steps)
+        self.time += self.config.defaults.simulation_steps
         self.step_count += 1
-        self.config.field = self.field
 
-        # Optional live render
+        # Live render (1D and 2D only for now)
         if dim in (1, 2):
             frame = render_frame(self.field, self.config, step=self.step_count)
             self.animator.add(frame, step=self.step_count)
 
-        # Metrics: selectively recompute R and T for export
+        # Track symbolic operators for metrics
         R = curvature_operator(psi, dim)
         T = torsion_operator(psi, dim)
 

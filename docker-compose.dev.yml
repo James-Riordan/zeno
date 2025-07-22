@@ -6,7 +6,7 @@ services:
     working_dir: /app
     volumes:
       - ./zeno-engine-python:/app
-    command: ["python", "src/main.py", "--scene", "RTI_2D", "--steps", "500", "--dim", "2"]
+    command: ["python", "src/zenoengine/main.py", "--scene", "RTI_2D", "--steps", "500", "--dim", "2"]
     ports:
       - "9000:9000"  # Still useful if API is ever used
     environment:
@@ -15,11 +15,11 @@ services:
 
   viewer:
     build:
-      context: ./zeno-viewer
+      context: ./zeno-gui
       dockerfile: Dockerfile.dev
     working_dir: /app
     volumes:
-      - ./zeno-viewer:/app
+      - ./zeno-gui:/app
       - /app/node_modules
     # command: ["yarn", "dev", "--host"]
     ports:

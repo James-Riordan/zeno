@@ -1,16 +1,16 @@
 import typer
-import subprocess
+import webbrowser
 
-app: typer.Typer = typer.Typer(help="Viewer controls")
-
-
-@app.command()
-def dev() -> None:
-    """Launch viewer in dev mode."""
-    subprocess.run(["yarn", "dev", "--host"], cwd="../zeno-viewer")
-
+app: typer.Typer = typer.Typer(help="🖼️ Zeno Viewer commands")
 
 @app.command()
-def select(overlay: str) -> None:
-    """Switch viewer overlay/chart/visual."""
-    typer.echo(f"📈 Switching viewer overlay to: {overlay}")
+def open() -> None:
+    """Open the Zeno Viewer in the browser."""
+    url = "http://localhost:5173"
+    typer.echo(f"🌐 Opening viewer at {url}...")
+    webbrowser.open(url)
+
+@app.command()
+def status() -> None:
+    """Check if viewer is up (placeholder)."""
+    typer.echo("📡 Viewer status: (not implemented)")
